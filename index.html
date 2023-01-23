@@ -19,9 +19,25 @@
     
             <div id="questions" class="display">
                 <h2 id="title"></h2>
-                <div id="options" class="options"></div>
-                <button id="next">Next ></button>
+                <div id="options" class="options">
+                    <div class="form-check">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="Radios" id="Radios1" value="option1" checked>
+                            <label class="form-check-label" for="Radios1" id="rad1"></label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="Radios" id="Radios2" value="option2">
+                            <label class="form-check-label" for="Radios2" id="rad2"></label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="Radios" id="Radios3" value="option3">
+                            <label class="form-check-label" for="Radios3" id="rad3"></label>
+                          </div>
+                        </div>
+                        <br>
             </div>
+
+            <button id="next">Next ></button>
 
             <div id="end-quiz" class="display">
                 <h2>All done!</h2>
@@ -31,6 +47,6 @@
         
         <script src="./assets/js/questions.js"></script>
         <script src="./assets/js/script.js"></script>
-
+        
     </body>
 </html>

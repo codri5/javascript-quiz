@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 200%;
@@ -33,12 +37,3 @@ button {
 button:hover {
     background-color: #5c72f3;
 }
-  
-
-  
-
-  
-
-  
-
- 
