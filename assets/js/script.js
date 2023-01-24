@@ -15,6 +15,7 @@ let radio3 = document.getElementById('rad3');
 let option1 = document.getElementById('Radios1');
 let option2 = document.getElementById('Radios2');
 let option3 = document.getElementById('Radios3');
+let scoreIn = document.getElementById('score');
 
 // Shuffle array
 let questionsChosen = [];
@@ -68,9 +69,9 @@ let clickCount = 0;
 nextBtn.onclick = function() {
   clickCount++;
   userAnswers()
-
+  
   if (clickCount === 5) {
-    displayScore();
+    displayScore()
     options.setAttribute('style', 'display: none');
   }
 }
@@ -79,18 +80,28 @@ nextBtn.onclick = function() {
 let chosenAnswers = [];
 
 function userAnswers() {
-  if (option1.checked) {
-    chosenAnswers.push(parseInt(option1.value));
-  } else if (option2.checked) {
-    chosenAnswers.push(parseInt(option2.value));
-  } else {
-    chosenAnswers.push(parseInt(option3.value));
+  if (option1.checked) { chosenAnswers.push(parseInt(option1.value)); } 
+  if (option2.checked) { chosenAnswers.push(parseInt(option2.value)); } 
+  if (option3.checked) { chosenAnswers.push(parseInt(option3.value)); }
+}
+
+function checkScore() {
+  let score = 0;
+  while (chosenAnswers.length === 5) {
+    if (chosenAnswers[0] === correctAnswers[0]) { score++; }
+    if (chosenAnswers[1] === correctAnswers[1]) { score++; }
+    if (chosenAnswers[2] === correctAnswers[2]) { score++; }
+    if (chosenAnswers[3] === correctAnswers[3]) { score++; }
+    if (chosenAnswers[4] === correctAnswers[4]) { score++; }
+    break;
   }
+  scoreIn.textContent = score;
 }
 
 // Display score
 function displayScore() {
   end.setAttribute('style', 'display: inline-block');
+  checkScore()
 }
 
 // Event listeners 

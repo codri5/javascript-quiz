@@ -19,6 +19,10 @@ body {
 .display {
     display: none;
 }
+
+.options {
+    display: inline;
+}
   
 button {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
