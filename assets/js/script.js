@@ -8,28 +8,28 @@ let start = document.querySelector('#start-quiz');
 let end = document.querySelector('#end-quiz');
 let startBtn = document.querySelector('#start');
 let nextBtn = document.querySelector('#next');
-let submitBtn = document.querySelector('#submit');
 let radio1 = document.getElementById('rad1');
 let radio2 = document.getElementById('rad2');
 let radio3 = document.getElementById('rad3');
+let radios = document.getElementsByTagName('input');
 let option1 = document.getElementById('Radios1');
 let option2 = document.getElementById('Radios2');
 let option3 = document.getElementById('Radios3');
-let scoreIn = document.getElementById('score');
+let score = document.getElementById('score');
 
 // Shuffle array
 let questionsChosen = [];
 let shuffle = questions.sort(() => 0.5 - Math.random());
 questionsChosen = shuffle.slice(0, 5);
 
+// Array of questions
+let questionTitles = [];
+questionsChosen.forEach(item => questionTitles.push(item.question));
+
 // Array of answer options
 let answerOptions = [];
 questions.forEach(item => answerOptions.push(item.options));
 answerOptions = answerOptions.slice(0, 5);
-
-// Array of questions
-let questionTitles = [];
-questionsChosen.forEach(item => questionTitles.push(item.question));
 
 // Array of correct answers
 let correctAnswers = [];
@@ -49,11 +49,8 @@ let count = 0;
 function displayQuestion() {
   titles.textContent = questionTitles[count];
   radioContent()
-
   display.setAttribute('style', 'display: inline');
   start.setAttribute('style', 'display: none');
-  titles.setAttribute('style', 'font-size: 100%');
-  nextBtn.setAttribute('style', 'font-size: 70%');
 }
 
 // Display next questions
@@ -61,19 +58,7 @@ function nextQuestion() {
     count++;
     titles.textContent = questionTitles[count];
     radioContent()
-}
-
-// Count next button clicks and store answers
-let clickCount = 0;
-
-nextBtn.onclick = function() {
-  clickCount++;
-  userAnswers()
-  
-  if (clickCount === 5) {
-    displayScore()
-    options.setAttribute('style', 'display: none');
-  }
+    radios[0].click()
 }
 
 // Store user answers
@@ -85,23 +70,35 @@ function userAnswers() {
   if (option3.checked) { chosenAnswers.push(parseInt(option3.value)); }
 }
 
+// Count next button clicks
+let clickCount = 0;
+
+nextBtn.onclick = function() {
+  clickCount++;
+  userAnswers()
+  checkScore()
+  if (clickCount === 5) {
+    displayScore()
+  }
+}
+
+// Count score
+let scoreCount = 0;
+
 function checkScore() {
-  let score = 0;
   while (chosenAnswers.length === 5) {
-    if (chosenAnswers[0] === correctAnswers[0]) { score++; }
-    if (chosenAnswers[1] === correctAnswers[1]) { score++; }
-    if (chosenAnswers[2] === correctAnswers[2]) { score++; }
-    if (chosenAnswers[3] === correctAnswers[3]) { score++; }
-    if (chosenAnswers[4] === correctAnswers[4]) { score++; }
+    for (let i = 0; i < chosenAnswers.length; i++) {
+      if (chosenAnswers[i] === correctAnswers[i]) { scoreCount++; }
+      }
     break;
   }
-  scoreIn.textContent = score;
+  score.textContent = scoreCount;
 }
 
 // Display score
 function displayScore() {
+  options.setAttribute('style', 'display: none');
   end.setAttribute('style', 'display: inline-block');
-  checkScore()
 }
 
 // Event listeners 
