@@ -72,12 +72,15 @@ button:hover {
     font-style: italic;
 }
 
+#start-quiz {
+    margin-top: 150px;
+}
+
 #finish {
     font-size: 50px;
     font-style: italic;
     font-weight: bold;
-    margin-bottom: 25px;
-    margin-top: 30px;
+    margin-top: 150px;
     margin-left: 50px;
 }
 
@@ -87,10 +90,13 @@ button:hover {
     }
 
     .form-check-label {
-        margin-left: 15px;
+        margin-left: 10px;
     }
 
     #title {
         font-size: 25px;
+    }
+    #finish {
+        margin-top: 185px;
     }
   }
